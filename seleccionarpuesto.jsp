@@ -54,10 +54,10 @@
                 Statement instruccion = conexion.createStatement();
                 ResultSet tabla;
             %>            
-            <form class="col s12" method="post" action="saveClient2.jsp">
+            <form class="col s12" method="post" action="escogerpuesto.jsp">
               <div class="row">
                 <div class="input-field col s6">
-                  <select id="dropdown_dep" name="sexo">
+                  <select id="dropdown_dep" name="dep">
                   <%
                       tabla = instruccion.executeQuery( "select * from departamentos order by nombre;");      
                   %>
@@ -79,16 +79,10 @@
 
               <div class="row">
                 <div class="input-field col s12">
-                  <select id="dropdown_puesto" name="ciudad">   
-                    <%
-                      tabla = instruccion.executeQuery( "select * from ciudades order by nombre;");      
-                  %>
-                    <option value="" disabled selected>Escoja una opción</option>
-                    <% while(tabla.next()) { %>
-                      <option value="<%= tabla.getInt(1) %>"><%= tabla.getString(2) %></option>
-                    <% } %>                
+                  <select id="dropdown_puesto" name="puesto">   
+                    <option value="" disabled selected>Escoja una opción</option>               
                   </select>
-                  <label>Ciudad</label>
+                  <label>Puesto</label>
                 </div>
               </div>
               <div class="row">
