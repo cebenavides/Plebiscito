@@ -53,84 +53,81 @@
 
     </PRE>
   
-    <%
-
-  try{
-          Class.forName("com.mysql.jdbc.Driver");
-           
-          Connection conexion = DriverManager.getConnection("jdbc:mysql://plebiscito.cyacgp8je8e3.us-east-1.rds.amazonaws.com/plebiscito","root","Eliminadisimo");
-           
-          Statement instruccion = conexion.createStatement();
-           
-          ResultSet tabla = instruccion.executeQuery("select* from departamentos order by nombre;");
-           %>
-                       <!-- Tabla- -->
-              <div class="container">
-                <div class="section">
-                  <div class="row">
-                    <form class="col s12" method="post" action="grabar_cedula.jsp">
-                    <!-- --------------------------------------- -->
-                      <div class="row">
+     <%      
+              try{
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection conexion = DriverManager.getConnection("jdbc:mysql://plebiscito.cyacgp8je8e3.us-east-1.rds.amazonaws.com/plebiscito","root","Eliminadisimo");
+                Statement instruccion = conexion.createStatement();
+                ResultSet tabla;
+            %>            
+            <div class="container">
+              <form class="col s12" method="post" action="grabar_cedula.jsp">
+              <div class="row">
+                     <div class="row">
                         <div class="input-field col s12">
                           <input id="id1" name="nombre" type="text">
                           <label for="id1">Nombre</label>
                         </div>
                       </div>
-                      <!-- ------------------------------------- -->
                       <div class="row">
                         <div class="input-field col s12">
-                          <input id="id2" name="apellido" type="text">
-                          <label for="id2">Apellido</label>
+                          <input id="id1" name="apellido" type="text">
+                          <label for="id1">apellido</label>
                         </div>
                       </div>
-                      <!-- --------------------------------------- -->
                       <div class="row">
                         <div class="input-field col s12">
-                          <input id="id3" name="cedula" type="number">
-                          <label for="id3">Cedula</label>
+                          <input id="id1" name="cedula" type="number">
+                          <label for="id1">Cedula</label>
                         </div>
                       </div>
-                      <!-- ---------------------------------------- -->
-                      <div class="row">
-                        <div class="input-field col s12" id="departamento">
-                           <select name="idCiudad">
-                            <%
-                              while (tabla.next())  {
-                            %>
-                              <option value=<%= tabla.getInt(1)%>><%= tabla.getString(2)%></option>
-                              <%
-                              }
-                            %>
-                          <label for="id4">Departamento</label>
-                        </div>
-                      </div>
+                <div class="input-field col s6">
+                  <select id="dropdown_dep" name="dep">
+                  <%
+                      tabla = instruccion.executeQuery( "select * from departamentos order by nombre;");      
+                  %>
+                    <option value="" disabled selected>Escoja una opción</option>
+                    <% while(tabla.next()) { %>
+                      <option value="<%= tabla.getInt(1) %>"><%= tabla.getString(2) %></option>
+                    <% } %>
+                  </select>
+                  <label>Departamento</label>
+                </div>
 
-                     
-                      
-                      <!-- ---------------------------------------- -->
-                        <div class="row">
-                        <div class="input-field col s12">
-                          <button class="btn waves-effect waves-light" type="submit" name="action" required="1">
-                            <i class="material-icons right">send</i>
-                          </button>
-                        </div>
-                      </div>
-                      <!-- ---------------------------------------- -->
-                    </form>
-                  </div>        
+                <div class="input-field col s6">
+                  <select id="dropdown_ciudad" name="ciudad">   
+                    <option value="" disabled selected>Escoja una opción</option>               
+                  </select>
+                  <label>Ciudad</label>
+                </div>
+              </div> 
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <select id="dropdown_puesto" name="puesto">   
+                    <option value="" disabled selected>Escoja una opción</option>               
+                  </select>
+                  <label>Puesto</label>
                 </div>
               </div>
-           <!-- Tabla -->
-            
-           <%
-                           
-               }
-               catch(Exception e){
-                   out.println("ERROR! "+e.getMessage());
-               }
-                 
-                
-                %>
+              <div class="row">
+                <div class="input-field col s12">
+                  <button class="btn waves-effect waves-light" type="submit" name="action" required="1">Enviar
+                    <i class="material-icons right">send</i>
+                  </button>
+                </div>
+              </div>
+            </form>
+            </div>
+            <%  
+              }
+              catch(Exception e){
+                 out.println("ERROR! "+e.getMessage());
+              }
+            %>
+        </div>
+
+ 
 
 
     
@@ -146,6 +143,8 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="js/customike.js"></script>
 
   </body>
 </html>

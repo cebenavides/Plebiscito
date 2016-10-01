@@ -1,9 +1,9 @@
 $(document).ready(function() {
     var arreglo = [];
-    $('#dropdown_dep').change(function() {
+    $('#dropdown_ciudad').change(function() {
         
         var selectedValue = $(this).val();
-        var selectDropdown = $("#dropdown_ciudad").empty().html(' ');
+        var selectDropdown = $("#dropdown_puesto").empty().html(' ');
         selectDropdown.append($("<option disabled selected></option>").attr("value",0).text("Escoja una opción"));
         jQuery.ajax({
             url : 'pruebamike.jsp',
@@ -21,7 +21,7 @@ $(document).ready(function() {
     });
 
   
-    $('#dropdown_ciudad').on('contentChanged', function() {
+    $('#dropdown_puesto').on('contentChanged', function() {
         $(this).material_select();
     });
 });
