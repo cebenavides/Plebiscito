@@ -1,3 +1,5 @@
+﻿<% String puestoactual = (String)session.getAttribute("puestoactual"); %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +14,7 @@
 </head>
 
 <body>
+  <%@ page language="java" import="java.sql.*,javax.naming.*,javax.sql.*" %>
   <nav class="white" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo blue-text text-darken-2">Sistema de votación</a>
       <ul class="right hide-on-med-and-down">
@@ -27,6 +30,39 @@
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
   </nav>
+
+  <div class="section no-pad-bot blue blue-darken-4" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center white-text">Puesto de votación</h1>
+      <div class="row center">
+        <h5 class="header col s12 light white-text"><%= puestoactual %></h5>
+      </div>
+      <br><br>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        <form class="col s12" method="post" action="#">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="id" name="id" type="number" class="validate" required="1">
+              <label for="id">Cédula</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <button class="btn waves-effect waves-light" type="submit" name="action" required="1">Enviar
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>        
+    </div>
+  </div>
 
 
   <!--  Scripts-->

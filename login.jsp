@@ -1,3 +1,7 @@
+<%
+  String userid = (String)session.getAttribute("userid");
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,17 +16,28 @@
 </head>
 
 <body>
-  <nav class="white" role="navigation">
+  <nav class="white z-depth-3" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo blue-text text-darken-2">Sistema de votación</a>
       <ul class="right hide-on-med-and-down">
         <li><a class="black-text" href="/">Inicio</a></li>
-        <li><a class="black-text" href="#">Consultar puesto</a></li>
-        <li><a class="waves-effect waves-light btn amber black-text">Ingresar</a></li>
+        <li><a class="black-text" href="cedula.jsp">Inscribir cédula</a></li>
+        <li><a class="black-text" href="votacion.jsp">Consultar puesto</a></li>
+        <% if (userid==null) { %>
+          <li><a class="waves-effect waves-light btn amber black-text" href="login.html">Ingresar</a></li>
+        <% }else{ %>
+          <li><a class="black-text" href="Listpuesto.jsp">Registrar puesto</a></li>
+          <li><a class="waves-effect waves-light btn amber black-text" href="salir.jsp">Salir</a></li>
+        <% } %>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Lista de productos</a></li>
-        <li><a href="#">Lista de clientes</a></li>
+        <li><a class="black-text" href="/">Inicio</a></li>
+        <li><a class="black-text" href="votacion.jsp">Consultar puesto</a></li>
+        <% if (userid==null) { %>
+          <li><a class="waves-effect waves-light btn amber black-text" href="login.html">Ingresar</a></li>
+        <% }else{ %>
+          <li><a class="waves-effect waves-light btn amber black-text" href="salir.jsp">Salir</a></li>
+        <% } %>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
@@ -31,16 +46,16 @@
   <div class="container">
     <div class="section">
       <div class="row">
-        <form class="col s12" method="post" action="#">
+        <form class="col s12" method="post" action="validacion.jsp">
           <div class="row">
             <div class="input-field col s12">
-              <input id="id" name="id" type="text" class="validate" required="1">
+              <input id="id" name="user" type="text" class="validate" required="1">
               <label for="id">Usuario</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input id="id" name="id" type="password" class="validate" required="1">
+              <input id="id2" name="pass" type="password" class="validate" required="1">
               <label for="id">Contraseña</label>
             </div>
           </div>

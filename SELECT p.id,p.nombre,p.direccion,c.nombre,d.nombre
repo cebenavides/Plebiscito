@@ -1,0 +1,3 @@
+SELECT p.id,p.nombre,p.direccion,c.nombre,d.nombre
+FROM votantes v,puestos p,ciudades c,departamentos d
+WHERE (v.idpuesto=p.id AND c.idciudades=p.idciudad AND d.iddepartamentos=c.iddepartamento);
