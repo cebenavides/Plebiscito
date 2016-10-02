@@ -1,4 +1,4 @@
-<%
+﻿<%
   String userid = (String)session.getAttribute("userid");
 %>
 

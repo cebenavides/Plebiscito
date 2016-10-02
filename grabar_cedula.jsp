@@ -1,11 +1,11 @@
-<%
+﻿<%
   String userid = (String)session.getAttribute("userid");
 %>
 <%
    String nombre = request.getParameter( "nombre" );
    String apellido = request.getParameter( "apellido" );
    String cedula = request.getParameter( "cedula" );
-   String idpuesto = request.getParameter( "idpuesto" );
+   String idpuesto = request.getParameter( "puesto" );
 %>
 <html lang="en">
 <head>
@@ -23,7 +23,6 @@
     <%@page contentType="text/html"%> 
     <%@page pageEncoding="UTF-8"%>
     <%@ page language="java" import="java.sql.*,javax.naming.*,javax.sql.*" %>
-    <%@ page language="java" import="java.sql.*,javax.naming.*,javax.sql.*" %> 
     <%@ taglib prefix="menu" tagdir="/WEB-INF/tags" %>
     <menu:navbar/>
 <!-------------------------------------------------------------------------------------------------- -->
@@ -43,7 +42,7 @@
           Statement instruccion = conexion.createStatement();
            
           //int val = instruccion.executeUpdate("INSERT INTO `plebiscito`.`votantes` (`cedula`, `nombre`, `apellido`, `idpuesto`, `checkVoto`) VALUES ('"+cedula+"', '"+nombre+"','"+apellido+"', '"+idpuesto+"', '0');");//
-          int val = instruccion.executeUpdate("INSERT INTO `plebiscito`.`votantes` (`cedula`, `nombre`, `apellido`, `idpuesto`, `checkVoto`) VALUES ('"+cedula+"', '"+nombre+"','"+apellido+"', '1', '0');");
+          int val = instruccion.executeUpdate("INSERT INTO `plebiscito`.`votantes` (`cedula`, `nombre`, `apellido`, `idpuesto`, `checkVoto`) VALUES ('"+cedula+"', '"+nombre+"','"+apellido+"', '"+idpuesto+"', '0');");
         
         
                 %>
