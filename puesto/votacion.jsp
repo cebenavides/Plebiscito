@@ -1,4 +1,5 @@
-﻿<% String puestoactual = (String)session.getAttribute("puestoactual"); %>
+﻿<% String puestoactual = (String)session.getAttribute("puestoactual"); 
+String idpuestoactual = (String)session.getAttribute("idpuestoactual");%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,14 +19,11 @@
   <nav class="white" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo blue-text text-darken-2">Sistema de votación</a>
       <ul class="right hide-on-med-and-down">
-        <li><a class="black-text" href="/">Inicio</a></li>
-        <li><a class="black-text" href="#">Consultar puesto</a></li>
-        <li><a class="waves-effect waves-light btn amber black-text" href="login.html">Ingresar</a></li>
+        <li><a class="black-text" href="#">Inicio</a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Lista de productos</a></li>
-        <li><a href="#">Lista de clientes</a></li>
+        <li><a href="#">Inicio</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
@@ -45,10 +43,10 @@
   <div class="container">
     <div class="section">
       <div class="row">
-        <form class="col s12" method="post" action="#">
+        <form class="col s12" method="post" action="validar.jsp">
           <div class="row">
             <div class="input-field col s12">
-              <input id="id" name="id" type="number" class="validate" required="1">
+              <input id="id" name="cedula" type="number" class="validate" required="1">
               <label for="id">Cédula</label>
             </div>
           </div>

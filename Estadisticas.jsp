@@ -1,69 +1,73 @@
-<%
-  String userid = (String)session.getAttribute("userid");
-%>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <%@page contentType="text/html"%> 
   <%@page pageEncoding="UTF-8"%>
-  <title>Estadísticas</title>
-
+  <%@ page language="java" import="java.sql.*,javax.naming.*,javax.sql.*,org.json.simple.*" %>
+  <title>Registrar puesto de votación</title>
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link rel="stylesheet" href="css/style11.css">
-
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-  <nav class="white z-depth-3" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo blue-text text-darken-2">Sistema de votación</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a class="black-text" href="/">Inicio</a></li>
-        <li><a class="black-text" href="cedula.jsp">Inscribir cédula</a></li>
-        <li><a class="black-text" href="votacion.jsp">Consultar puesto</a></li>
-        <% if (userid==null) { %>
-          <li><a class="waves-effect waves-light btn amber black-text" href="login.html">Ingresar</a></li>
-        <% }else{ %>
-          <li><a class="black-text" href="Listpuesto.jsp">Registrar puesto</a></li>
-          <li><a class="waves-effect waves-light btn amber black-text" href="salir.jsp">Salir</a></li>
-        <% } %>
-      </ul>
-
-      <ul id="nav-mobile" class="side-nav">
-        <li><a class="black-text" href="/">Inicio</a></li>
-        <li><a class="black-text" href="votacion.jsp">Consultar puesto</a></li>
-        <% if (userid==null) { %>
-          <li><a class="waves-effect waves-light btn amber black-text" href="login.html">Ingresar</a></li>
-        <% }else{ %>
-          <li><a class="waves-effect waves-light btn amber black-text" href="salir.jsp">Salir</a></li>
-        <% } %>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-    </div>
-  </nav>
-
+  <%@ page language="java" import="java.sql.*,javax.naming.*,javax.sql.*" %>
+  <%@ taglib prefix="menu" tagdir="/WEB-INF/tags" %>
+  <menu:navbar/>
+  
   <div><h3 class="center-align">Estadísticas</h3></div>
 
-  
-  <div id="pieChart" class="chart"></div>
-
-  <div class="input-field col s3">
-    <select>
-      <option value="" disabled selected>Choose your option</option>
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-      <option value="3">Option 3</option>
-    </select>
-    <label>Materialize Select</label>
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        <div class="input-field col s12">
+          
+        </div>
+      </div>
+    </div>
   </div>
 
-<!--  Scripts-->  
+
+  <div id="container1" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+
+  <center>
+    <%try{
+    Class.forName("com.mysql.jdbc.Driver");
+    Connection conexion = DriverManager.getConnection("jdbc:mysql://plebiscito.cyacgp8je8e3.us-east-1.rds.amazonaws.com/plebiscito","root","Eliminadisimo");
+    Statement instruccion2 = conexion.createStatement();
+    ResultSet val2 = instruccion2.executeQuery("SELECT id, nombre FROM plebiscito.puestos");%>  
+    <form action="demo_form.asp" method="get" id="form1">
+      <div class="row">
+        <div class="input-field col s12">
+          <select id="puest">
+            <% while(val2.next()){ %>
+            <option value="<%= val2.getString(1) %>"><%= val2.getString(2) %></option>
+            <%}%>
+            <%}catch(Exception e){
+            System.out.println(e);
+          } %>
+        </select>
+        <label> Conteo en puesto de votación específico</label>
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <div class="input-field col s12">
+      <button onclick="myFunction()" class="btn waves-effect waves-light"> Consultar
+       <i class="material-icons right">send</i>
+     </button>
+   </div>
+ </div>
+
+</center>
+
+<div id="container2" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
   <script src="js/index.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
-
-  </body>
+</body>
 </html>

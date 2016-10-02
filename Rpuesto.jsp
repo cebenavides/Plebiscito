@@ -19,32 +19,8 @@
 </head>
 <body>
   <%@ page language="java" import="java.sql.*,javax.naming.*,javax.sql.*" %>
-  <nav class="white z-depth-3" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo blue-text text-darken-2">Sistema de votación</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a class="black-text" href="/">Inicio</a></li>
-        <li><a class="black-text" href="cedula.jsp">Inscribir cédula</a></li>
-        <li><a class="black-text" href="votacion.jsp">Consultar puesto</a></li>
-        <% if (userid==null) { %>
-          <li><a class="waves-effect waves-light btn amber black-text" href="login.html">Ingresar</a></li>
-        <% }else{ %>
-          <li><a class="black-text" href="Listpuesto.jsp">Registrar puesto</a></li>
-          <li><a class="waves-effect waves-light btn amber black-text" href="salir.jsp">Salir</a></li>
-        <% } %>
-      </ul>
-
-      <ul id="nav-mobile" class="side-nav">
-        <li><a class="black-text" href="/">Inicio</a></li>
-        <li><a class="black-text" href="votacion.jsp">Consultar puesto</a></li>
-        <% if (userid==null) { %>
-          <li><a class="waves-effect waves-light btn amber black-text" href="login.html">Ingresar</a></li>
-        <% }else{ %>
-          <li><a class="waves-effect waves-light btn amber black-text" href="salir.jsp">Salir</a></li>
-        <% } %>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-    </div>
-  </nav>
+  <%@ taglib prefix="menu" tagdir="/WEB-INF/tags" %>
+  <menu:navbar/>
 
   <div>
     <h3 class="center-align">Registrar puesto de votación</h3>
@@ -119,7 +95,7 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
-  <script src="js/custom.js"></script>
+  <script src="js/custom3.js"></script>
 
   </body>
 </html>
