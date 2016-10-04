@@ -15,31 +15,15 @@ String idpuestoactual = (String)session.getAttribute("idpuestoactual");%>
 </head>
 
 <body>
+  <%  
+    if(puestoactual == null || idpuestoactual == null){
+      response.sendRedirect("/");
+    }
+  %>  
   <%@ page language="java" import="java.sql.*,javax.naming.*,javax.sql.*" %>
-  <nav class="white" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo blue-text text-darken-2">Sistema de votación</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a class="black-text" href="#">Inicio</a></li>
-      </ul>
-
-      <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Inicio</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-    </div>
-  </nav>
-
-  <div class="section no-pad-bot blue blue-darken-4" id="index-banner">
-    <div class="container">
-      <br><br>
-      <h1 class="header center white-text">Puesto de votación</h1>
-      <div class="row center">
-        <h5 class="header col s12 light white-text"><%= puestoactual %></h5>
-      </div>
-      <br><br>
-    </div>
-  </div>
-
+  <%@ taglib prefix="menu" tagdir="/WEB-INF/tags" %>
+  <menu:navbarpuesto title="Puesto de votación" subtitle="<%= puestoactual %>"/>
+  
   <div class="container">
     <div class="section">
       <div class="row">

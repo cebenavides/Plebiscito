@@ -16,9 +16,14 @@
 </head>
 
 <body>
+  <%  
+    if(userid == null){
+      response.sendRedirect("/");
+    }
+  %>  
   <%@ page language="java" import="java.sql.*,javax.naming.*,javax.sql.*" %>
   <%@ taglib prefix="menu" tagdir="/WEB-INF/tags" %>
-  <menu:navbar/>
+  <menu:navbar title="Sistema de votación electrónico" subtitle="Asociar a puesto de votación"/>
 
   <div class="container">
       <div class="section">

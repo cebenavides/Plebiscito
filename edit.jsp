@@ -22,13 +22,15 @@
 
 </head>
 <body>
+  <%  
+    if(userid == null){
+      response.sendRedirect("/");
+    }
+  %>    
   <%@ page language="java" import="java.sql.*,javax.naming.*,javax.sql.*" %>
   <%@ taglib prefix="menu" tagdir="/WEB-INF/tags" %>
-  <menu:navbar/>
+  <menu:navbar title="Sistema de votación electrónico" subtitle="Editar puesto de votación"/>
 
-  <div>
-    <h3 class="center-align">Editar puesto de votación</h3>
-  </div>
   <div class="container">
     <div class="section">
       <div class="row">
@@ -56,7 +58,7 @@
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <select class="validate" required="1">
+              <select id="dropdown_dep" class="validate" required="1">
                 <% while(val2.next()){ %>
                 <option value="<%= val2.getString(1) %>"><%= val2.getString(2) %></option>
                 <% } %>
@@ -66,7 +68,7 @@
           </div>
           <div class="row">
             <div  class="input-field col s12">
-              <select name="ciudad"  class="validate" required="4">
+              <select id="drowpdown_ciudad" name="ciudad"  class="validate" required="4">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>

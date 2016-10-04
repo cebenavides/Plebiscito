@@ -17,7 +17,7 @@
 
 <body>
   <%@ taglib prefix="menu" tagdir="/WEB-INF/tags" %>
-  <menu:navbar/>
+  <menu:navbar title="Sistema de votación electrónico" subtitle="Ingresar al portal administrativo"/>
 
   <div class="container">
     <div class="section">

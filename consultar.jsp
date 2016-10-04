@@ -20,14 +20,9 @@
     <%@page pageEncoding="UTF-8"%> 
     <%@ page language="java" import="java.sql.*,javax.naming.*,javax.sql.*" %>
     <%@ taglib prefix="menu" tagdir="/WEB-INF/tags" %>
-    <menu:navbar/>
+    <menu:navbar title="Sistema de votación electrónico" subtitle="Consultar puesto"/>
 <!-------------------------------------------------------------------------------------------------- -->
-     <PRE>
-      
-
-
-    </PRE>
-  
+ 
     <%
 
   try{

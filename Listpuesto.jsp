@@ -19,23 +19,14 @@
 </head>
 
 <body>
+  <%  
+    if(userid == null){
+      response.sendRedirect("/");
+    }
+  %>  
   <%@ page language="java" import="java.sql.*,javax.naming.*,javax.sql.*" %>
   <%@ taglib prefix="menu" tagdir="/WEB-INF/tags" %>
-  <menu:navbar/>
-
-  <div class="section no-pad-bot blue blue-darken-4" id="index-banner">
-    <div class="container">
-      <br><br>
-      <h1 class="header center white-text">Listado de puestos de votación</h1>
-      <div class="row center">
-         <% if (userid!=null) { %>
-          <h5 class="header col s12 light white-text">Bienvenido, <%= userid %></h5>
-        <% } %>
-        <br><br>     
-      </div>
-      <br><br>
-    </div>
-  </div>
+  <menu:navbar title="Sistema de votación electrónico" subtitle="Puestos de votación"/>
 
                 <%
                try{

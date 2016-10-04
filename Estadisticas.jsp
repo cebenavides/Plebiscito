@@ -11,11 +11,14 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <%  
+    if(userid == null){
+      response.sendRedirect("/");
+    }
+  %>  
   <%@ page language="java" import="java.sql.*,javax.naming.*,javax.sql.*" %>
   <%@ taglib prefix="menu" tagdir="/WEB-INF/tags" %>
-  <menu:navbar/>
-  
-  <div><h3 class="center-align">Estadísticas</h3></div>
+  <menu:navbar title="Sistema de votación electrónico" subtitle="Estadísticas"/>
 
   <div class="container">
     <div class="section">

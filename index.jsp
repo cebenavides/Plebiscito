@@ -16,21 +16,14 @@
 
 <body>
   <%@ taglib prefix="menu" tagdir="/WEB-INF/tags" %>
-  <menu:navbar/>
-
-  <div class="section no-pad-bot blue blue-darken-4" id="index-banner">
-    <div class="container">
-      <br><br>
-      <h1 class="header center white-text">Sistema de votación electrónico</h1>
-      <div class="row center">
-         <% if (userid!=null) { %>
-          <h5 class="header col s12 light white-text">Bienvenido, <%= userid %></h5>
-        <% } %>
-        <br><br>     
-      </div>
-      <br><br>
-    </div>
-  </div>
+  <% String subtitle;
+    if (userid == null) {
+      subtitle = "";
+    }else{
+      subtitle = "Bienvenido, "+userid;
+    }
+  %>
+  <menu:navbar title="Sistema de votación electrónico" subtitle="<%= subtitle %>"/>
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
