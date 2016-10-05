@@ -3,7 +3,7 @@
 <%@ attribute name="subtitle" %>
 <% String userid = (String)session.getAttribute("userid"); %>
 
-<nav class="white z-depth-3" role="navigation">
+<nav class="white z-depth-2" role="navigation">
   <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo blue-text text-darken-2">Sistema de votación</a>
     <ul class="right hide-on-med-and-down">
       <li><a class="black-text" href="/">Inicio</a></li>

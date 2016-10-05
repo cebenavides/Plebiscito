@@ -1,3 +1,7 @@
+<%
+  String userid = (String)session.getAttribute("userid");
+%>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
