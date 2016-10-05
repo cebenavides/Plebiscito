@@ -1,5 +1,6 @@
 <%
    String id = request.getParameter("id");
+   String city = request.getParameter("ciudad");
 %>
 <HTML> 
 <HEAD>
@@ -12,7 +13,7 @@
 					Connection conexion = DriverManager.getConnection("jdbc:mysql://plebiscito.cyacgp8je8e3.us-east-1.rds.amazonaws.com/plebiscito","root","Eliminadisimo");
 					Statement instruccion = conexion.createStatement();
 					int val = instruccion.executeUpdate("delete from puestos where id ="+Integer.parseInt(id)+"");
-           response.sendRedirect("/Listpuesto.jsp");
+          response.sendRedirect("/Listpuesto.jsp?ciudad="+city);
 					%>
 					<h3> Puesto eliminado</h3>
 

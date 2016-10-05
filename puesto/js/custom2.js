@@ -3,7 +3,6 @@ $(document).ready(function() {
 
     function myFunction() {
     	var value = "<%=idvotante%>";
-        alert(value);
         swal({   
         	title: "Tarjetón",   
         	text: "¿Apoya usted el acuerdo final para terminar el conflicto y construir una paz estable y duradera?",   

@@ -7,5 +7,6 @@
     $('#dropdown_puesto').material_select();
     $('#puest').material_select();
 	$('#menu').load('navbar.jsp');
+	$('.slider').slider({full_width: true})
   });
 })(jQuery);

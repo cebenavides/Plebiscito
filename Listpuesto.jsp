@@ -1,5 +1,7 @@
 ﻿<%
   String userid = (String)session.getAttribute("userid");
+  String dep = request.getParameter("dep");
+  String city = request.getParameter("ciudad");
 %>
 
 <!DOCTYPE html>
@@ -33,7 +35,8 @@
           Class.forName("com.mysql.jdbc.Driver");
           Connection conexion = DriverManager.getConnection("jdbc:mysql://plebiscito.cyacgp8je8e3.us-east-1.rds.amazonaws.com/plebiscito","root","Eliminadisimo");
           Statement instruccion = conexion.createStatement();
-          ResultSet tabla = instruccion.executeQuery("SELECT p.id,p.nombre,p.direccion,d.nombre,c.nombre FROM puestos p,ciudades c,departamentos d WHERE p.idciudad=c.idciudades AND c.iddepartamento=d.iddepartamentos;");
+          Statement instruccion2 = conexion.createStatement();
+          ResultSet tabla = instruccion.executeQuery("SELECT p.id,p.nombre,p.direccion,d.nombre,c.nombre FROM puestos p,ciudades c,departamentos d WHERE (p.idciudad=c.idciudades AND c.iddepartamento=d.iddepartamentos AND p.idciudad="+city+");");
            %>
   <table class="highlight"> 
       <tr>   
@@ -51,9 +54,16 @@
              <td><%=tabla.getString(2)%></td>
              <td><%=tabla.getString(3)%></td> 
              <td><%=tabla.getString(4)%></td>
-             <td><%=tabla.getString(5)%></td> 
-             <td><a href="delete.jsp?id=<%=tabla.getString(1)%>" class="btn-floating blue"><i class="material-icons">delete</i></a> 
-             <td><a href="edit.jsp?id=<%=tabla.getString(1)%>" class="btn-floating blue"><i class="material-icons">mode_edit</i></a>
+             <td><%=tabla.getString(5)%></td>
+             <%
+              ResultSet tabla2 = instruccion2.executeQuery("select count(idpuesto) from votantes where idpuesto="+tabla.getString(1)+" group by idpuesto;");
+              if(!tabla2.next()){
+             %>
+             <td><a href="delete.jsp?id=<%=tabla.getString(1)%>&ciudad=<%=city%>" class="btn-floating blue"><i class="material-icons">delete</i></a></td> 
+             <% }else{ %>
+             <td></td>
+             <% } %>
+             <td><a href="edit.jsp?id=<%=tabla.getString(1)%>&ciudad=<%=city%>" class="btn-floating blue"><i class="material-icons">mode_edit</i></a>
              </td>
            </tr>      
   <%}%>
@@ -64,9 +74,7 @@
                    out.println("ERROR! "+e.getMessage());
                }      
                 %>
-<center>
-<a href="Rpuesto.jsp" class="waves-effect waves-light btn"><i class="material-icons left">library_add</i> ingresar puesto de votación</a>
-</center> 
+
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>

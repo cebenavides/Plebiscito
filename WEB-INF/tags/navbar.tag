@@ -12,7 +12,7 @@
         <li><a class="waves-effect waves-light btn amber black-text" href="login.jsp">Ingresar</a></li>
       <% }else{ %>
         <li><a class="black-text" href="cedula.jsp">Inscribir cédula</a></li>
-        <li><a class="black-text" href="Listpuesto.jsp">Puestos</a></li>
+        <li><a class="black-text" href="buscarporparametro.jsp">Puestos</a></li>
         <li><a class="black-text" href="seleccionarpuesto.jsp">Asociar a puesto</a></li>
         <li><a class="black-text" href="Estadisticas.jsp">Estadísticas</a></li>
         <li><a class="waves-effect waves-light btn amber black-text" href="salir.jsp">Salir</a></li>

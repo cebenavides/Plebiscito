@@ -17,7 +17,7 @@
 					Connection conexion = DriverManager.getConnection("jdbc:mysql://plebiscito.cyacgp8je8e3.us-east-1.rds.amazonaws.com/plebiscito","root","Eliminadisimo");
 					Statement instruccion = conexion.createStatement();
 					int val = instruccion.executeUpdate("INSERT INTO `puestos` (`nombre`, `direccion`, `idciudad`) VALUES ('"+nombre+"', '"+direccion+"', '"+ciudad+"')");
-          response.sendRedirect("/Listpuesto.jsp");
+          response.sendRedirect("/buscarporparametro.jsp");
 					%>
 					<h3> Cliente ingresado correctamente</h3>
 
