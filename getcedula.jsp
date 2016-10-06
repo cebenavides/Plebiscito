@@ -29,7 +29,6 @@
 <%
   try{
           Class.forName("com.mysql.jdbc.Driver");
-           
           Connection conexion = DriverManager.getConnection("jdbc:mysql://plebiscito.cyacgp8je8e3.us-east-1.rds.amazonaws.com/plebiscito","root","Eliminadisimo");
            
           Statement instruccion = conexion.createStatement();
@@ -43,7 +42,7 @@
                     <!-- ----------------- -->
                       <TABLE class="highlight">
                           <TR>
-                            <TD><b>Nombre </b></TD>
+                            <TD><b>Nombre</b></TD>
                             <TD><b>Apellido </b></TD>
                             <TD><b>Cedula</b></TD>
                             <TD><b>Puesto</b></TD>
@@ -55,6 +54,7 @@
                             if (tabla.next())  {
 
                               %>
+                              <div id="prueba" value=0 />
                               <TR>
                               <TD><%= tabla.getString(1)%> </TD>
                               <TD><%= tabla.getString(2)%></TD>
@@ -66,26 +66,7 @@
                               </TR>     
                               <%
                             }else{ %>
-                              <script>function loco() {
-        swal({   
-          title: "Tarjetón",   
-          text: "¿Apoya usted el acuerdo final para terminar el conflicto y construir una paz estable y duradera?",   
-          type: "warning",   
-          showCancelButton: true,   
-          confirmButtonColor: "#009900",   
-          confirmButtonText: "Sí",    
-          cancelButtonText: "No",   
-          closeOnConfirm: false,   
-          closeOnCancel: false 
-        }, 
-        function(isConfirm){   
-          if (isConfirm) {     
-            
-          } else {     
-            window.location = "index.jsp";  
-        }       
-        });
-    }   </script>
+                             <div id="prueba" value=1 />
                           <% } %>
                     </TABLE>
                     <!-- ----------------- -->
@@ -102,16 +83,7 @@
                  
                 
                 %>
-
-
-    
-   
-     
-   
-      <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script type="text/javascript" src="js/materialize.min.js"></script>
-<!-- ----------------------------------------------------------------------------------------------- -->
+  <!-- ----------------------------------------------------------------------------------------------- -->
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
